@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!winField" class="container-field" :class="{'current': state.current == props.num || state.current == 0}">
+    <div v-if="!winField" class="container-cell" :class="{'current': state.current == props.num || state.current == 0}">
         <div class="small-btn">
             <div v-if="state.current == props.num || state.current == 0 || cells[1] != '-'" class="">
                 <button v-if="cells[1] === '-'"  @click="play(1)"></button>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div v-else class="container-field-win">{{ cells[0] }}</div>
+    <div v-else class="container-cell-win">{{ cells[0] }}</div>
 </template>
 <script setup lang="ts">
 import { defineProps, watch,  ref, reactive } from 'vue';
@@ -66,7 +66,7 @@ const props = defineProps({
   num: {
     type: String,
     required: true
-  }
+  },
 });
 
 const store = useStore()
@@ -95,10 +95,11 @@ watch(() => store.state.current, (newValue, oldValue) => {
     state.current = newValue
 })
 
+
 </script>
 
 <style scoped>
-.container-field{
+.container-cell{
     display: flex;
     width: 300px;
     height: 300px;
@@ -107,7 +108,7 @@ watch(() => store.state.current, (newValue, oldValue) => {
     outline: 1px solid black;
     
 }
-.container-field-win{
+.container-cell-win{
     display: flex;
     width: 300px;
     height: 300px;
