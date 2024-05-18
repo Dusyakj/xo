@@ -33,13 +33,10 @@ import { reactive, watch, ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex'
 
-const start = ref(0)
 
 const reset = async () => {
     try {
         const response = await axios.get('http://localhost:3000/reset')
-        start.value = 1
-        start.value = 0
     } catch (error) {
         console.log(error)
     }
