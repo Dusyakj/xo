@@ -81,7 +81,6 @@ const winField = ref(0)
 
 
 const play = async (cell: number) => {
-    // winField.value = 1
     const response = await axios.post('http://localhost:3000/click', { field: props.num, cell: cell });
     const data = response.data
     cells.value = data.fieldList
