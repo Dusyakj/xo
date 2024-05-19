@@ -30,13 +30,15 @@
 import FieldXO from '@/components/FieldXO.vue'
 import axios from 'axios'
 import { reactive, watch, ref } from 'vue'
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex'
 
 
 const reset = async () => {
     try {
+        store.commit('toRestart', 1)
+        store.commit('changeCurrent', 0)
         const response = await axios.get('http://localhost:3000/reset')
+        store.commit('toRestart', 0)
     } catch (error) {
         console.log(error)
     }

@@ -73,7 +73,7 @@ const store = useStore()
 
 const state = reactive({
     win : store.state.win,
-    current : store.state.current
+    current : store.state.current,
 })
 
 const cells = ref(['-', '-', '-', '-', '-', '-', '-', '-', '-', '-',])
@@ -93,6 +93,12 @@ const play = async (cell: number) => {
 
 watch(() => store.state.current, (newValue, oldValue) => {
     state.current = newValue
+})
+
+watch(() => store.state.restart, (newValue, oldValue) => {
+    cells.value = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-',]
+    console.log(cells.value)
+    winField.value = 0
 })
 
 
